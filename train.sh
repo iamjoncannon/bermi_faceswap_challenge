@@ -1,3 +1,4 @@
+# train call
 
 python faceswap.py train \
 	-A ./training_data/src  \
