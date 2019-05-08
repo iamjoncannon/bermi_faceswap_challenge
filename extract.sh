@@ -6,7 +6,7 @@ python faceswap.py extract \
 	-D s3fd \
 	-r 1 \
 	-bt .5 \
-	-A fan /
+	-A fan 
 
 python faceswap.py extract \
 	-i ./original \
@@ -15,4 +15,4 @@ python faceswap.py extract \
 	-D s3fd \
 	-r 1 \
 	-bt .5 \
-	-A fan /
+	-A fan 

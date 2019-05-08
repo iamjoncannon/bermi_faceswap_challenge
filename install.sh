@@ -13,4 +13,5 @@ sudo chmod +x s3syncremote.sh
 ./s3syncremote.sh
 sudo chmod +x extract.sh
 ./extract.sh
+exit
 ENDSSH

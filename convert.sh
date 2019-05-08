@@ -11,6 +11,6 @@ python faceswap.py convert -i \
 	-t villain \
 	-w ffmpg \
 	-ref bermi_video.mp4 \
-	-t villain /
+	-t villain 
 
 aws s3 sync data/output/ s3://jaylow/Final_Output --delete 

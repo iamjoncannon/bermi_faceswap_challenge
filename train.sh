@@ -10,4 +10,4 @@ python faceswap.py train \
 	-t villain \
 	-bs 8 \
 	-w \
-	-wl /
+	-wl 
