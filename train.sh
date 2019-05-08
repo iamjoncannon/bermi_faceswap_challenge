@@ -7,6 +7,7 @@ python faceswap.py train \
 	-alb ./JLoSource/output/alignments.json \
 	-m ./model \
 	-g 1 \
-	-t realface \
+	-t villain \
+	-bs 8 \
 	-w \
 	-wl /

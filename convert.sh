@@ -9,7 +9,6 @@ python faceswap.py convert -i \
 	-M predicted \
 	-g 1 \
 	-t villain \
-	-bs 8 \
 	-w ffmpg \
 	-ref bermi_video.mp4 \
 	-t villain /
