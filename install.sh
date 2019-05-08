@@ -5,7 +5,8 @@ ssh -T -i $key ubuntu@$faceSwapMachine << 'ENDSSH'
 sudo apt-get update
 cd faceswap
 mkdir -p training_data/JLo training_data/original model raw
-aws s3 sync s3://jcsecondattempt . 
+aws s3 sync s3://jcsecondattempt .
+git clone https://github.com/iamjoncannon/bermi_faceswap_challenge.git 
 sudo chmod +x initModels.sh
-./initModels.sh
+./extract.sh
 ENDSSH

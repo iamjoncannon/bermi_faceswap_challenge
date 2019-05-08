@@ -16,13 +16,13 @@ Initial tests were done utilizing p2xlarge EC2 running Ubuntu. An AMI was genera
 
 NOTE: The faceswap library included a Docker file, however the p2 series EC2 already contains and was optimized for the Deep Learning libraries (TensorFlow, etc) installed. Containerization seemed redundant and inefficient. 
 
-## Initializing training data
+## Extract- generate training data
 
 Training data was processed locally then relayed to remote machine via S3. 
 
 See "install.sh" and "initModels.sh" scripts for installation of EC2 used for final training. 
 
-## Training procedure
+## train- train the model
 
 The faceswap library runs tensor flow machine learning algorithms to analyze the photos in each source file (in the 'data' folder).  
 
@@ -38,7 +38,7 @@ python faceswap.py train -A ./data/src -ala ./original -B ./data/JLo -alb ./JLoS
 
 Note: the -w option outputs an image periodically to observe progress. 
 
-## Generating Swap Model
+## convert - generate swap video from model
 
 After creating a model, the library uses the model to process the original video and generate a swapped version.
 
