@@ -1,3 +1,5 @@
+# these process the raw photos/video into training data used for ML 
+
 ffmpeg -i ./weddingplanner.mp4 -vf fps=5 ./JLoSource/maid-video-frame-%d.png
 ffmpeg -i ./maidinmanhattan.mp4 -vf fps=5 ./JLoSource/jenny-video-frame-%d.png
 ffmpeg -i ./bermi_video.mp4 -vf fps=100 ./original/video-frame-%d.png

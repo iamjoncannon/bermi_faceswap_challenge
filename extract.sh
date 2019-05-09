@@ -1,18 +1,25 @@
 # this intializes the training data into its folder for the training
 python faceswap.py extract \
-	-i ./JLoSource/output \
+	-i ./raw \
 	-o ./training_data/JLo \
 	-mp \
 	-D s3fd \
 	-r 1 \
-	-bt .5 \
 	-A fan 
 
+python tools.py effmpeg \
+	-a extract \
+	-i bermi_video.mp4 \
+	-fps -1 \
+	-ef .png \
+
 python faceswap.py extract \
-	-i ./original \
-	-o ./training_data/src \
+	-i ./training_data/original_video \
+	-o ./training_data/ffmpeg_vid \
 	-mp \
+	-r 30 \
+	-A fan \
 	-D s3fd \
-	-r 1 \
-	-bt .5 \
-	-A fan 
+	-min 50 
+	# -bt 30 \
+	# -bt .5 \

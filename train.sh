@@ -1,13 +1,16 @@
 # train call
+# one line to run in tmux:
+# tmux new-session -d -s train './train.sh'
 
 python faceswap.py train \
-	-A ./training_data/src  \
-	-ala ./original/alignments.json \
+	-A ./training_data/ffmpeg_vid  \
+	-ala ./training_data/align/source/alignments.json \
 	-B ./training_data/JLo \
-	-alb ./JLoSource/output/alignments.json \
+	-alb ./training_data/align/JLo/alignments.json \
 	-m ./model \
-	-g 1 \
-	-t villain \
-	-bs 8 \
+	-g 8 \
+	-t original \
+	-bs 256 \
 	-w \
-	-wl 
+	# -wl 
+
