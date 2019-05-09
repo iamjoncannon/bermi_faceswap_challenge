@@ -1,5 +1,7 @@
 # FaceSwap Challenge
 
+![Alt text](/jaylow.png?raw=true "Jaylow")
+
 This repo documents my use of the FaceSwap library https://github.com/deepfakes/faceswap to transform the woman in bermi_video.mp4 into the Latina celebrity Jennifer Lopez. The training was done on a AWS EC2 p series instance optimized for Deep Learning, running NVIDA CUDA GPUs. A container image was captured from the final machine instance used to complete the training, and can be accessed on the AWS AMI registry at ami-00f5a1dbd1440c90b.
 
 The FaceSwap library utilized had extensive settings that were not discussed in the README, but rather displayed in the "help" option for each CLI call (see help.txt). This information was critical to improving the output of the initial training attempt.
