@@ -55,7 +55,9 @@ The library utilizes an alignment algorithm to target faces more precisely (-A),
 
 ## Train the model
 
-The faceswap library runs tensorflow machine learning algorithms to analyze the photos in each source file. In initial tests, the faceswap library could not target the woman's face in the second half of the original video for swapping.
+The faceswap library runs tensorflow machine learning algorithms to analyze the photos in each source file. The process generally takes 12-48 hours of time. This processing was completed overnight, for a total of around 20 GPU hours combined between p2xlarge and p2x8large machines. 
+
+In initial tests, the faceswap library could not target the woman's face in the second half of the original video for swapping.
 
 Subsequent attempts experimented with alignment ("-ala -alb") options as well as using a rotation option to better target faces in the source photos (-A and -r above).  See "train.sh." These were utilized in the train call with "-ala" and "-alb" options, which point the training algorithm to an alignment.json file that contains precise data on each source file. 
 
@@ -77,15 +79,15 @@ python faceswap.py train \
 
 The -bs option optimized training by defining the batch size, ie the number of images used in each iteration. This had to be the closet power of two below the total number of source images.
 
-The -w option outputs an image periodically to observe progress (see preview.jpg). The images was automatically relayed to local machine via s3 through cronjobs on each machine (calling getPreview.sh and putPreview.sh every two minutes) for continuous monitoring throughout the training process. This monitoring resulted in several additional extraction iterations to improve overall results.
+The -w option outputs an image periodically to observe progress (see preview.jpg). The image was automatically relayed to local machine via s3 through cronjobs on each machine (calling getPreview.sh and putPreview.sh every two minutes) for continuous monitoring throughout the training process. This monitoring resulted in several additional extraction iterations to improve overall results.
 
 ## Convert source video woman to JLo
 
-After training, the model is utilized to process the original video and generate a swapped version. The FaceSwap library exposed a cli method to automatically generate a new from the photos.  Setting selection here was critical to the final outcome.
+After training, the model is utilized to process the original video and generate a swapped version. The FaceSwap library exposed a cli method to automatically generate a new video from the photos.  Setting selection here was critical to the final outcome.
 
 Because this process required several steps, a script was utilized to pseudo-terminal into the remote session, pause training, generate the video, relay the video between remote and local machines via s3, and restart the training process. See convertScript.sh.
 
-This allowed specific options to be experimented with and examined easily, critical for finding the correct settings for the final video: 
+This allowed specific options to be experimented with and examined easily, critical for identifying the correct settings for the final video: 
 
 ```Bash
 python faceswap.py convert \
@@ -100,7 +102,7 @@ python faceswap.py convert \
 	-ref bermi_video.mp4  # automatically generates a video from the source images
 ```
 
-See notes in convertScript.sh for specific setting discussion. The major improvement was the '-c match-hist and -sc sharpen' option.
+See notes in convertScript.sh for specific setting discussion. The major improvements were  '-c match-hist and -sc sharpen' options.
 
 ## Conclusion
 
